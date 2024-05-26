@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Home Page</title>
+    <style>
+  /* Style the header */
+header {
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header div {
+  display: inline-block;
+}
+
+header button {
+  margin-right: 10px;
+}
+
+ul#projectList {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul#projectList li {
+  margin-bottom: 10px;
+}
+
+ul#projectList li button {
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+.delete {
+  color: red;
+}
+
+.archive {
+  color: orange;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+}
+
+.save-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <header>
+       
+        <h1>Employee Home Page</h1>
+        <div>
+            <button onclick="logout()">Logout</button>
+            <button onclick="openProfileModal()">Profile</button>
+        </div>
+    </header>
+    <ul id="projectList">
+        <li id="project1">
+            <button style="background-color: #3498db;" onclick="redirectToProjectPage(1)">Project 1</button>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <button class="dropdown-button" onclick="editProjectName('project1')">Rename</button>
+                    <button class="dropdown-button" onclick="deleteProject('project1')" class="delete">Delete</button>
+                    <button class="dropdown-button" onclick="archiveProject('project1')" class="archive">Archive</button>
+                </div>
+            </div>
+        </li>
+        <li id="project2">
+            <button style="background-color: #2ecc71;" onclick="redirectToProjectPage(2)">Project 2</button>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <button class="dropdown-button" onclick="editProjectName('project2')">Rename</button>
+                    <button class="dropdown-button" onclick="deleteProject('project2')" class="delete">Delete</button>
+                    <button class="dropdown-button" onclick="archiveProject('project2')" class="archive">Archive</button>
+                </div>
+            </div>
+        </li>
+        <li id="project3">
+            <button style="background-color: #e74c3c;" onclick="redirectToProjectPage(3)">Project 3</button>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <button class="dropdown-button" onclick="editProjectName('project3')">Rename</button>
+                    <button class="dropdown-button" onclick="deleteProject('project3')" class="delete">Delete</button>
+                    <button class="dropdown-button" onclick="archiveProject('project3')" class="archive">Archive</button>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button onclick="addProjectButton()">Add Button</button>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeProfileModal()" style="float: right; cursor: pointer;">&times;</span>
+            <h2>Profile</h2>
+            <input type="text" id="firstNameInput" placeholder="First Name">
+            <input type="text" id="lastNameInput" placeholder="Last Name">
+            <button class="save-button" onclick="saveProfile()">Save</button>
+        </div>
+    </div>
+
+    <script>
+         // Define passcodes for each project
+         var passcodes = {
+            project1: "passcode1",
+            // Define passcodes for other projects as needed
+        };
+
+        // Function to authenticate passcode
+        function authenticatePasscode(projectId) {
+            var passcode = prompt("Enter passcode for Project " + projectId + ":");
+            if (passcode === passcodes[projectId]) {
+                redirectToProjectPage(projectId); // Redirect if passcode is correct
+            } else {
+                alert("Incorrect passcode. Access denied."); // Alert for incorrect passcode
+            }
+        }
+
+        // Redirect to project page function
+        function redirectToProjectPage(projectId) {
+            // Check passcode before redirecting
+            if (passcodes[projectId]) {
+                // Redirect to project page if passcode exists
+                window.location.href = "file:///Users/noora/Desktop/website/n.html?textbox1=&dropdown1=not_approved&textbox2=&dropdown2=not_approved&textbox3=&dropdown3=approved&textbox4=&dropdown4=waiting";
+            } else {
+                alert("Access denied. Passcode not set for Project " + projectId + "."); // Alert if passcode is not set
+            }
+        }
+   
+        var projectCounter = 3; // Counter for generating unique IDs for new project buttons
+
+        // Function to add a new project button
+        function addProjectButton() {
+            projectCounter++;
+            var li = document.createElement("li");
+            li.id = "project" + projectCounter;
+            var button = document.createElement("button");
+            button.style.backgroundColor = getRandomColor(); // Generate random color for the new button
+            button.textContent = "Project " + projectCounter;
+            li.appendChild(button);
+
+            var dropdown = document.createElement("div");
+            dropdown.className = "dropdown";
+
+            var dropdownContent = document.createElement("div");
+            dropdownContent.className = "dropdown-content";
+
+            var renameButton = document.createElement("button");
+            renameButton.className = "dropdown-button";
+            renameButton.textContent = "Rename";
+            renameButton.onclick = function() {
+                editProjectName(li.id);
+            };
+            dropdownContent.appendChild(renameButton);
+
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "dropdown-button delete";
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function() {
+                deleteProject(li.id);
+            };
+            dropdownContent.appendChild(deleteButton);
+
+            var archiveButton = document.createElement("button");
+            archiveButton.className = "dropdown-button archive";
+            archiveButton.textContent = "Archive";
+            archiveButton.onclick = function() {
+                archiveProject(li.id);
+            };
+            dropdownContent.appendChild(archiveButton);
+
+            dropdown.appendChild(dropdownContent);
+
+            li.appendChild(dropdown);
+
+            document.getElementById("projectList").appendChild(li);
+        }
+
+        // Function to edit project name
+        function editProjectName(projectId) {
+            var newName = prompt("Enter the new name for the project:");
+            if (newName !== null && newName.trim() !== "") {
+                document.getElementById(projectId).querySelector("button").textContent = newName;
+            }
+        }
+
+        // Function to delete project
+        function deleteProject(projectId) {
+            if (confirm("Are you sure you want to delete this project?")) {
+                document.getElementById(projectId).remove();
+            }
+        }
+
+        // Function to archive project
+        function archiveProject(projectId) {
+            if (confirm("Are you sure you want to archive this project?")) {
+                // Here you can define what to do when archiving a project, like changing its style, moving it to another list, etc.
+                alert("Project archived successfully!");
+            }
+        }
+
+        // Function to generate a random color
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Logout function
+        function logout() {
+            // Your logout logic here
+            alert("Logging out...");
+        }
+
+        // Open profile modal function
+        function openProfileModal() {
+            document.getElementById("profileModal").style.display = "block";
+        }
+
+        // Close profile modal function
+        function closeProfileModal() {
+            document.getElementById("profileModal").style.display = "none";
+        }
+
+        // Save profile function
+        function saveProfile() {
+            var firstName = document.getElementById("firstNameInput").value;
+            var lastName = document.getElementById("lastNameInput").value;
+            // You can add your logic here to save the profile
+            alert("Saving profile...\nFirst Name: " + firstName + "\nLast Name: " + lastName);
+            closeProfileModal(); // Close the modal after saving
+        }
+
+        // Redirect to project page function
+        function redirectToProjectPage(projectId) {
+            window.location.href = "file:///Users/noora/Desktop/website/n.html?textbox1=&dropdown1=not_approved&textbox2=&dropdown2=not_approved&textbox3=&dropdown3=approved&textbox4=&dropdown4=waiting";
+        }
+    </script>
+</body>
+</html>
