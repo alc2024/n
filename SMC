@@ -1,0 +1,2557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Content Calendar</title>
+    <style>
+        table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+/* Centering the input and video */
+#video-url-input, #video-player {
+    display: block;
+    
+}
+
+/* Styling for the video player */
+#video-player {
+    margin-top: 20px;
+}
+
+/* Adjusting the size of the video player */
+#video-player {
+    width: 80%;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <h1>31-Day Content Calendar</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows for the calendar -->
+            <tr>
+                <td>
+                    <form>
+                        <label for="datepicker">Select a Date:</label>
+                        <input type="date" id="datepicker" name="datepicker">
+                      </form>
+                      <div>
+                        <div>
+                            <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                            <div id="preview-container" style="display: none;">
+                                <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                                <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                            </div>
+                        </div>
+                        <script src="script.js"></script>
+                        <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                        <video id="video-player" controls width="640">
+                            <source id="video-source" src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    
+                        <script src="script.js"></script>
+                    <div class="content">
+                      <div>
+                        <label for="text1">Arabic Copy:</label>
+                        <textarea rows="4" cols="50" placeholder=""></textarea>
+                        <select>
+                          <option value="approved">Approved</option>
+                          <option value="not_approved">Not Approved</option>
+                          <option value="waiting">Waiting for Approval</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="text2">English Copy:</label>
+                        <textarea rows="4" cols="50" placeholder=""></textarea>
+                        <select>
+                          <option value="approved">Approved</option>
+                          <option value="not_approved">Not Approved</option>
+                          <option value="waiting">Waiting for Approval</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="text3">Arabic Caption:</label>
+                        <textarea rows="4" cols="50" placeholder=""></textarea>
+                        <select>
+                          <option value="approved">Approved</option>
+                          <option value="not_approved">Not Approved</option>
+                          <option value="waiting">Waiting for Approval</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="text4">English Caption:</label>
+                        <textarea rows="4" cols="50" placeholder=""></textarea>
+                        <select>
+                          <option value="approved">Approved</option>
+                          <option value="not_approved">Not Approved</option>
+                          <option value="waiting">Waiting for Approval</option>
+                        </select>
+                      </div>
+                    </div>
+                    <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+                    <div id="feedbackBox1" class="feedback">
+                      <h3>Feedback Box 1</h3>
+                      <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+                    </div>
+                    <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+                    <div id="feedbackBox2" class="feedback">
+                      <h3>Feedback Box 2</h3>
+                      <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+                    </div>
+                    <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+                    <div id="feedbackBox3" class="feedback">
+                      <h3>Feedback Box 3</h3>
+                      <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+                    </div>
+                    <br>
+
+                   
+
+                  </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td><form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+            </tr>
+            <tr>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td><form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td><form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+            </tr>
+            <tr>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+            </tr>
+            <tr>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+            </tr>
+            <tr>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td> <form>
+                  <label for="datepicker">Select a Date:</label>
+                  <input type="date" id="datepicker" name="datepicker">
+                </form>
+                <div>
+                  <div>
+                      <input type="text" id="link-input" placeholder="Enter Dropbox link" onchange="updatePreview()">
+                      <div id="preview-container" style="display: none;">
+                          <img id="thumbnail-img" alt="Thumbnail" style="width: 300px; height: auto; display: none;">
+                          <video id="thumbnail-video" controls style="width: 300px; height: auto; display: none;"></video>
+                      </div>
+                  </div>
+                  <script src="script.js"></script>
+                  <input type="text" id="video-url-input" placeholder="Paste Dropbox video link here" onchange="loadVideo()">
+                  <video id="video-player" controls width="640">
+                      <source id="video-source" src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              
+                  <script src="script.js"></script>
+              <div class="content">
+                <div>
+                  <label for="text1">Arabic Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text2">English Copy:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text3">Arabic Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="text4">English Caption:</label>
+                  <textarea rows="4" cols="50" placeholder=""></textarea>
+                  <select>
+                    <option value="approved">Approved</option>
+                    <option value="not_approved">Not Approved</option>
+                    <option value="waiting">Waiting for Approval</option>
+                  </select>
+                </div>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox1')">Show Feedback 1</button>
+              <div id="feedbackBox1" class="feedback">
+                <h3>Feedback Box 1</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox2')">Show Feedback 2</button>
+              <div id="feedbackBox2" class="feedback">
+                <h3>Feedback Box 2</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <button onclick="toggleFeedbackBox('feedbackBox3')">Show Feedback 3</button>
+              <div id="feedbackBox3" class="feedback">
+                <h3>Feedback Box 3</h3>
+                <textarea rows="4" cols="50" placeholder="Enter your feedback..."></textarea>
+              </div>
+              <br>
+
+             
+
+            </div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+     
+        // Store input values in cookies
+        function storeData() {
+            var inputs = document.querySelectorAll('input[type="text"], textarea, select');
+            for (var i = 0; i < inputs.length; i++) {
+                var input = inputs[i];
+                document.cookie = input.id + '=' + encodeURIComponent(input.value) + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+            }
+        }
+
+        // Retrieve and display stored input values
+        function displayStoredData() {
+            var data = '';
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie !== '') {
+                    var cookieParts = cookie.split('=');
+                    var inputId = cookieParts[0];
+                    var encodedValue = cookieParts[1];
+                    var value = decodeURIComponent(encodedValue);
+                    data += inputId + ': ' + value + '\n';
+                }
+            }
+            alert(data);
+        }
+
+        // Call loadData on page load
+        window.onload = loadData;
+    function loadVideo() {
+        const input = document.getElementById('video-url-input');
+        const videoPlayer = document.getElementById('video-player');
+        const videoSource = document.getElementById('video-source');
+    
+        // Get the link from input and modify it for direct access
+        let url = input.value.trim();
+        url = url.replace("www.dropbox.com", "dl.dropboxusercontent.com").replace("dl=0", "raw=1");
+    
+        // Update the source of the video player
+        videoSource.src = url;
+        videoPlayer.load();  // Load the new video source
+    
+        // Optionally, handle loading errors
+        videoPlayer.onerror = () => {
+            console.error('Failed to load video.');
+            alert('Video could not be loaded. Please check the link and try again.');
+        };
+    }
+    
+    // Optional: Automatically load video on page load if needed
+    // window.onload = loadVideo;
+    </script>
+</body>
+</html>
